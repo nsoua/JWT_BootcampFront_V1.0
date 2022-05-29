@@ -1,0 +1,145 @@
+
+    <h2 class="mb-3 text-center">Angular Select Dropdown Examle</h2>
+
+    <div class="container">
+        <!-- <h1>Angular Select Dropdown Example</h1> -->
+
+
+          <!-- <form [formGroup]="form" (ngSubmit)="submit()"> -->
+            <!-- <form [formGroup]="form" #myform="ngForm" (ngSubmit)="upload(myform)"> ooo-->
+
+
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <!-- <select formControlName="website" class="form-control" (change)="changeWebsite($event)"
+                [(ngModel)]="article.providerid" id="providerId" name="providerId"
+                [ngClass]="{ 'is-invalid': (submitted || f['website'].touched ) && f['website'].errors }">
+                    <option [value]="null" disabled selected> Choose Website</option>
+                    <option *ngFor="let provider of providers" [value]="provider.id" >{{provider.name}}</option>
+                </select> ooo -->
+
+            <!-- <div *ngIf="f['website'].touched && f['website'].invalid" class="alert alert-danger"> -->
+              <div *ngIf="f['website'].invalid  && (f['website'].touched || submitted)" class="invalid-feedback">
+                <div *ngIf="f['website'].errors && f['website'].errors['required']">Select Provider</div>
+            </div>
+            </div>
+
+            <div class="form-group">
+              <label for="articleLabel">Article Label</label>
+              <!-- <input type="text" formControlName="articleLabel" [(ngModel)]="article.label" class="form-control" placeholder = "The article label"
+              name="articleLabel" id="articleLabel"
+              [ngClass]="{ 'is-invalid': submitted && f['articleLabel'].errors }"
+              />  ooo-->
+              <div *ngIf="submitted && f['articleLabel'].invalid" class="invalid-feedback">
+                <div *ngIf="f['articleLabel'].errors&& f['articleLabel'].errors['required']">Article Label is required</div>
+                <div *ngIf="f['articleLabel'].errors['minlength']">
+                  Article name must be at least 6 characters
+                </div>
+                <div *ngIf="f['articleLabel'].errors['maxlength']">
+                  Article name must not exceed 20 characters
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+              <label for="articlePrice">Article Price</label>
+              <input type="text" formControlName="articlePrice" [(ngModel)]="article.price" class="form-control" placeholder = "The article Price"
+              [ngClass]="{ 'is-invalid': submitted && f['articlePrice'].errors }"
+              />
+              <div *ngIf="submitted && f['articlePrice'].invalid" class="invalid-feedback">
+                <div *ngIf="f['articlePrice'].errors&& f['articlePrice'].errors['required']">Article Label is required</div>
+              </div>
+            </div> -->
+
+            <div class="form-group">
+              <label for="articlePrice">Article Price</label>
+              <!-- <input type="number"  formControlName="articlePrice"  [(ngModel)]="article.price"  class="form-control"
+              id="articlePrice" name="articlePrice"
+               min="0" oninput="validity.valid||(value='');"
+
+              [ngClass]="{ 'is-invalid': submitted && f['articlePrice'].errors }"
+              placeholder="1000" required>  ooo-->
+
+              <div *ngIf="submitted && f['articlePrice'].invalid" class="invalid-feedback">
+                <div *ngIf="f['articlePrice'].errors && f['articlePrice'].errors['required']">Price is required</div>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label for="articlePicture">Join article picture</label>
+              <div>
+                <!-- <input type="file"  formControlName="articlePicture" id="articlePicture" name="articlePicture" (change)="onFileSelect($event)" -->
+                <!-- <input type="file"  formControlName="articlePicture" id="articlePicture" name="articlePicture" (change)="selectFile($event)"
+                 [(ngModel)]="article.picture"  [value]="article.picture" required
+                 [ngClass]="{ 'is-invalid': submitted && f['articlePicture'].errors }" /> ooo -->
+
+              <div *ngIf="f['articlePicture'].invalid  && (f['articlePicture'].touched || submitted)" class="invalid-feedback">
+                <div *ngIf="f['articlePicture'].errors && f['articlePicture'].errors['required']">You have to add a picture for your article</div>
+              </div>
+            </div>
+
+              <div class="col-4">
+                <!-- <button
+                  class="btn btn-success btn-sm"
+                  [disabled]="!selectedFiles"
+                  (click)="uploadFiles()"
+                >
+                  Upload
+                </button> -->
+              </div>
+            </div>
+
+
+
+
+
+            <!-- <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button> -->
+            <button class="btn btn-primary" type="submit" >Submit</button>
+        <!-- </form> ooo-->
+    </div>
+
+
+ <!-- <form [formGroup]="oppoSuitsForm" (ngSubmit)="onSubmit()">
+  <select formControlName="ProviderIdw"  [(ngModel)]="ProviderIdw" >
+    <select name="month" [(ngModel)]="month" #month required></select>
+
+    <option [value]="null" selected disabled>Choose oppo suit</option>
+    <option *ngFor="let suit of oppoSuits">{{suit}}</option>
+  </select>
+  <button>Submit</button>
+</form> -->
+
+
+
+
+
+<!--
+<form [formGroup]="oppoSuitsForm" (ngSubmit)="addArticle(myform)">
+  <select formControlName="provider">
+    <option value="">Choose oppo suit</option>
+    <option *ngFor="let provider of providers">{{provider}}</option>
+  </select>
+  <div class="error-block" *ngIf="submitted && handleError('name', 'required')">
+    You must provide a value!
+  </div>
+  <button>Submit</button>
+</form> -->
+
+
+
+<!--
+<form #myform="ngForm" (ngSubmit)="addArticle(myform)">
+<div class="row">
+  <div class="col-md-2"> <label>Provider</label></div>
+  <div class="col-md-9">
+      <div class="input-space">
+          <select formControlName="provider">
+              <option *ngFor="let provider of providers" [ngValue]="providerId">
+                  {{ provider.name }}
+              </option>
+          </select>
+      </div>
+  </div>
+</div>
+</form> -->

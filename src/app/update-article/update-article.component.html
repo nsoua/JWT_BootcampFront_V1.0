@@ -1,0 +1,44 @@
+<h2>Mise à jour d'un article</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form (ngSubmit)="updateArticle()">
+
+        <input [(ngModel)]="id" name="id" type="hidden" />
+
+        <div class="form-group">
+          <label for="providerId">Provider:</label>
+          <select ngModel name="providerId" class="form-control" id="providerId"(change)="changeWebsite($event)"
+            [(ngModel)]="providerId">
+            <option [value]= "[providerId]"  disabled selected> {{provider}}</option>
+            <option *ngFor="let provider of providers" [value]="provider.id" >{{provider.name}}</option>
+          </select>
+         </div>
+
+       <div class="form-group">
+        <label for="articleLabel">Article Label </label>
+        <input [(ngModel)]="label" name="articleLabel" size="20" type="text" class="form-control" id="articleLabel" />
+        </div>
+      <div class="form-group">
+       <label for="articlePrice">Article Price </label>
+        <input  type="number" name="articlePrice" id="articlePrice" class="form-control"
+          min="0" oninput="validity.valid||(value='');"
+          [(ngModel)]="price" />
+      </div>
+
+
+     <div class="form-group">
+      <label for="articlePicture">Article Picture </label>
+      <br>
+       <img src="{{urlUpload}}/{{picture}}" width="25%"/>
+
+       <input ngModel name="articlePicture" class="form-control" placeholder="Image" type="file"
+        (change)="onFileChanged($event)">
+      </div>
+  <button class="btn btn-primary">Mise à jour</button>
+</form>
+</div>
+</div>
+</div>
+

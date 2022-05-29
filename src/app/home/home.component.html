@@ -1,0 +1,30 @@
+<h1>Composant Home</h1>
+<img [src]="logo"/>
+<button (click)="display()" class="btn btn-primary">Cliquer ici</button>
+
+<br/><br/>
+<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+<span class="sr-only">Loading...</span>
+
+<span class="fa-stack fa-lg">
+  <i class="fa fa-square-o fa-stack-2x"></i>
+  <i class="fa fa-twitter fa-stack-1x"></i>
+</span>
+fa-twitter on fa-square-o<br>
+{{nom}}
+
+<h2 align="center">Liste des étudiants</h2>
+
+<ul>
+  <!-- <li *ngFor="let e of etudiants">{{e|uppercase}}</li> -->
+</ul>
+
+<table class="table table-bordered table-striped" [hidden]="displayed" >
+  <tr><th>Id User</th><th>Id Post</th><th>Title</th><th>Body</th></tr>
+  <tr *ngFor="let post of mesPosts">
+    <td>{{post.userId}}</td>
+    <td>{{post.id}}</td>
+    <td>{{post.title}}</td>
+    <td>{{post.body}}</td>
+  </tr>
+</table>

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Providers</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <!-- <a class="nav-item nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/listProvider" routerLinkActive="active">Liste</a> -->
+      <a class="nav-item nav-link" *ngIf="isLoggedIn" routerLink="/listProvider" routerLinkActive="active">Liste</a>
+      <!-- <a class="nav-item nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/addProvider" routerLinkActive="active">Ajouter</a> -->
+      <a class="nav-item nav-link" *ngIf="isLoggedIn" routerLink="/addProvider" routerLinkActive="active">Ajouter</a>
+      <!-- <a class="nav-item nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/listArticles" routerLinkActive="active">Liste des articles</a> -->
+      <a class="nav-item nav-link" *ngIf="isLoggedIn" routerLink="/listArticles" routerLinkActive="active">Liste des articles</a>
+      <!-- <a class="nav-item nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/addArticle" routerLinkActive="active">Ajouter un article</a> -->
+      <a class="nav-item nav-link" *ngIf="isLoggedIn" routerLink="/addArticle" routerLinkActive="active">Ajouter un article</a>
+      <!-- <a class="nav-item nav-link" *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" routerLinkActive="active">Login</a> -->
+      <!-- <a class="nav-item nav-link" *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" routerLinkActive="active">Logout</a> -->
+
+    </div>
+    <!-- <ul class="navbar-nav ml-auto" *ngIf="!loginService.isUserLoggedIn()"> -->
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <!-- <ul class="navbar-nav ml-auto" *ngIf="loginService.isUserLoggedIn()"> -->
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <!-- <a class="nav-item nav-link" *ngIf="isLoggedIn" routerLink="/logout" routerLinkActive="active">Logout</a> -->
+      </li>
+    </ul>
+
+
+  </div>
+</nav>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<router-outlet></router-outlet>
